@@ -56,7 +56,8 @@ get_tt_datasets_table <- function(min_year = 2018L,
 #' datasets for information such as number of variables and number of
 #' observations.
 #'
-#' @param tt_datasets_table
+#' @param tt_datasets_table A `tt_datasets` table returned by
+#'   [get_tt_datasets_table()].
 #'
 #' @return A tbl_df with columns year, week, dataset_name, variables (number of
 #'   columns), observations (number of rows), and variable_details (names and

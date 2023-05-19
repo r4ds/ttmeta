@@ -7,7 +7,8 @@
 get_tt_datasets_metadata(tt_datasets_table)
 }
 \arguments{
-\item{tt_datasets_table}{}
+\item{tt_datasets_table}{A \code{tt_datasets} table returned by
+\code{\link[=get_tt_datasets_table]{get_tt_datasets_table()}}.}
 }
 \value{
 A tbl_df with columns year, week, dataset_name, variables (number of
