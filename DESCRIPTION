@@ -4,8 +4,8 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Jon", "Harmon", , "jonthegeek@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-4781-4346"))
-Description: Find TidyTuesday datasets by variable class, and likely other
-    things.
+Description: Find TidyTuesday datasets by variable name, variable class, and 
+    likely other things.
 License: MIT + file LICENSE
 URL: https://github.com/r4ds/ttapi, https://r4ds.github.io/ttapi/
 BugReports: https://github.com/r4ds/ttapi/issues

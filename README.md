@@ -13,7 +13,8 @@ status](https://www.r-pkg.org/badges/version/ttapi)](https://CRAN.R-project.org/
 coverage](https://codecov.io/gh/r4ds/ttapi/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r4ds/ttapi?branch=main)
 <!-- badges: end -->
 
-Find TidyTuesday datasets by column class, and likely other things.
+Find TidyTuesday datasets by variable name, variable class, and likely
+other things.
 
 ## Installation
 
