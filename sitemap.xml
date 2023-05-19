@@ -25,6 +25,15 @@
     <loc>https://r4ds.github.io/ttapi/index.html</loc>
   </url>
   <url>
+    <loc>https://r4ds.github.io/ttapi/reference/get_tt_datasets_metadata.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/reference/get_tt_datasets_table.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/reference/get_tt_week_metadata.html</loc>
+  </url>
+  <url>
     <loc>https://r4ds.github.io/ttapi/reference/index.html</loc>
   </url>
   <url>
