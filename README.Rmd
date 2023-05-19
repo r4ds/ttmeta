@@ -1,0 +1,38 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# ttapi
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Find TidyTuesday datasets by column class, and likely other things.
+
+## Installation
+
+You can install the development version of ttapi from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("r4ds/ttapi")
+```
+
+## Usage
+
+Add usage information and examples here.
+
+## Code of Conduct
+
+Please note that the ttapi project is released with a [Contributor Code of Conduct](https://r4ds.github.io/ttapi/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
