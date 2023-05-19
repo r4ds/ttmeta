@@ -6,7 +6,7 @@
 \alias{ttapi-package}
 \title{ttapi: TidyTuesday Dataset API}
 \description{
-Find TidyTuesday datasets by column class, and likely other things.
+Find TidyTuesday datasets by variable name, variable class, and likely other things.
 }
 \seealso{
 Useful links:
