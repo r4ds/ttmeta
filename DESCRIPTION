@@ -4,15 +4,24 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Jon", "Harmon", , "jonthegeek@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-4781-4346"))
-Description: Find TidyTuesday datasets by column class, and likely other
+Description: Find TidyTuesday datasets by variable class, and likely other
     things.
 License: MIT + file LICENSE
 URL: https://github.com/r4ds/ttapi, https://r4ds.github.io/ttapi/
 BugReports: https://github.com/r4ds/ttapi/issues
 Suggests: 
     covr,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    tidytuesdayR
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Imports: 
+    cli,
+    dplyr,
+    lubridate,
+    purrr,
+    sloop
+Depends: 
+    R (>= 2.10)
