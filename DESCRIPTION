@@ -7,11 +7,12 @@ Authors@R:
 Description: Find TidyTuesday datasets by column class, and likely other
     things.
 License: MIT + file LICENSE
+URL: https://github.com/r4ds/ttapi, https://r4ds.github.io/ttapi/
+BugReports: https://github.com/r4ds/ttapi/issues
 Suggests: 
+    covr,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-URL: https://github.com/r4ds/ttapi
-BugReports: https://github.com/r4ds/ttapi/issues
