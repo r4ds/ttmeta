@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://r4ds.github.io/ttapi/404.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/CONTRIBUTING.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/SUPPORT.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/authors.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/index.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/reference/ttapi-package.html</loc>
+  </url>
+</urlset>
