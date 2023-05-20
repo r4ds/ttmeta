@@ -14,7 +14,11 @@ coverage](https://codecov.io/gh/r4ds/ttapi/branch/main/graph/badge.svg)](https:/
 <!-- badges: end -->
 
 Find TidyTuesday datasets by variable name, variable class, and likely
-other things.
+other things. Right now I’m focused on getting and cleaning the data.
+The package will include a frozen version of the data, plus functions to
+fetch updated data. The package will be much more useful after I’ve
+added functions to help search through the data (which will, as the
+package name implies, eventually be used to power an API and Shiny app).
 
 ## Installation
 
