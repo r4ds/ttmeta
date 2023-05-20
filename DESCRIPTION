@@ -14,17 +14,19 @@ Depends:
 Imports: 
     cli,
     dplyr,
+    fastmatch,
     glue,
     lubridate,
     purrr,
     rlang,
     rvest,
     sloop,
+    stringr,
+    tidytuesdayR,
     xml2
 Suggests: 
     covr,
-    testthat (>= 3.0.0),
-    tidytuesdayR
+    testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

@@ -16,6 +16,18 @@
   )
 }
 
+#' Extract text from all rows of a column in a table
+#'
+#' @param table An xml table object.
+#' @inheritParams .extract_text_col
+#'
+#' @inherit .extract_text_col return
+#' @keywords internal
+.extract_text_col_table <- function(table, col_number) {
+  rows <- xml2::xml_find_all(table, ".//tbody/tr")
+  return(.extract_text_col(rows, col_number))
+}
+
 #' Extract text from a particular row of an html table row
 #'
 #' @param row An xml node_set of a single row.
@@ -26,7 +38,8 @@
 .extract_text_cell <- function(row, col_number) {
   return(
     rvest::html_text(
-      xml2::xml_find_all(row, ".//td")[[col_number]]
+      xml2::xml_find_all(row, ".//td")[[col_number]],
+      trim = TRUE
     )
   )
 }
@@ -67,23 +80,23 @@
 #'
 #' @return An xml node_set of rows.
 #' @keywords internal
-.tt_readme_rows <- function(year) {
+.tt_year_readme_rows <- function(year) {
   return(
-    .tt_readme_table(year, 1) |>
+    .tt_year_readme_table(year, 1) |>
       xml2::xml_find_all(".//tr")
   )
 }
 
 #' Get a table from a particular TidyTuesday year readme
 #'
-#' @inheritParams .tt_readme_rows
+#' @inheritParams .tt_year_readme_rows
 #' @param table_number Which table on the page to load. I do not currently
 #'   validate this, so errors might be confusing if you send in a number higher
 #'   than the number of tables in that README.
 #'
 #' @return An xml node_set containing the body of the table.
 #' @keywords internal
-.tt_readme_table <- function(year, table_number) {
+.tt_year_readme_table <- function(year, table_number) {
   all_tables <- rvest::read_html(
     glue::glue(
       .tt_gh_base,
@@ -93,4 +106,29 @@
     xml2::xml_find_all(".//tbody")
 
   return(all_tables[[table_number]])
+}
+
+#' Extract all tables from a document
+#'
+#' @param x An xml (html) object or a subset thereof.
+#'
+#' @return A list of the tables in the object.
+#' @keywords internal
+.extract_tables <- function(x) {
+  return(
+    xml2::xml_find_all(x, ".//table")
+  )
+}
+
+#' Extract headings from a table
+#'
+#' @param table An xml/html table.
+#'
+#' @return A character vector of headings.
+#' @keywords internal
+.table_headings <- function(table) {
+  return(
+    xml2::xml_find_all(table, ".//th") |>
+      rvest::html_text(trim = TRUE)
+  )
 }

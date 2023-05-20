@@ -46,11 +46,20 @@ get_tt_datasets_metadata <- function(tt_tbl) {
 #' @export
 get_tt_week_metadata <- function(year, week) {
   this_week <- purrr::quietly(purrr::safely(tidytuesdayR::tt_load))(year, week)
-  if (length(this_week$result$result)) {
-    purrr::map(
-      this_week$result$result,
-      \(tt_dataset) {
-        .summarize_tt_dataset(tt_dataset, year, week)
+  this_week <- this_week$result$result
+  if (length(this_week)) {
+    dictionaries <- .extract_dataset_dictionaries(this_week)
+
+    purrr::map2(
+      this_week,
+      dictionaries,
+      \(tt_dataset, dictionary) {
+        .summarize_tt_dataset(
+          tt_dataset,
+          dictionary,
+          year,
+          week
+        )
       }
     ) |>
       purrr::list_rbind(names_to = "dataset_name") |>
@@ -73,19 +82,21 @@ get_tt_week_metadata <- function(year, week) {
       variable_details = list(NULL)
     )
   }
-  # TODO: Figure out how to read the dictionary. The README HTML is here:
-  # attr(this_week, ".tt") |> attr(".readme")
 }
 
 #' Summarize a TidyTuesday dataset
 #'
 #' @param tt_dataset The dataset to summarize.
+#' @param dictionary The extracted data dictionary for this dataset.
 #' @param year The year of this dataset (to include in the summary info).
 #' @param week The week of this dataset (to include in the summary info).
 #'
 #' @return A `tbl_df` summarizing the data.
 #' @keywords internal
-.summarize_tt_dataset <- function(tt_dataset, year, week) {
+.summarize_tt_dataset <- function(tt_dataset,
+                                  dictionary,
+                                  year,
+                                  week) {
   return(
     dplyr::tibble(
       year = year,
@@ -96,8 +107,105 @@ get_tt_week_metadata <- function(year, week) {
         dplyr::tibble(
           variable = names(tt_dataset),
           class = purrr::map_chr(tt_dataset, ~ sloop::s3_class(.x)[[1]])
-        )
+        ) |>
+          dplyr::left_join(dictionary, by = "variable")
       )
     )
   )
+}
+
+#' Extract data dictionaries from week readmes
+#'
+#' @param tt_data A `tt_data` object from [tidytuesdayR::tt_load()].
+#'
+#' @return A named list of `tbl_df`s, with one tibble per dataset. The tibbles
+#'   have columns `variable` and `description`, and either one row per variable
+#'   or 0 rows.
+#' @keywords internal
+.extract_dataset_dictionaries <- function(tt_data) {
+  datanames <- names(tt_data)
+  dictionaries <- list()
+
+  readme <- attr(
+    attr(tt_data, ".tt", exact = TRUE),
+    ".readme",
+    exact = TRUE
+  )
+  if (length(readme)) {
+    tables <- .extract_tables(readme)
+    description_locations <- purrr::map_int(
+      tables,
+      \(table) {
+        return(
+          purrr::detect_index(
+            tolower(.table_headings(table)),
+            ~ .x %fin% c("description", "definition")
+          )
+        )
+      }
+    )
+    dictionaries <- purrr::map2(
+      tables[description_locations != 0],
+      description_locations[description_locations != 0],
+      \(this_table, this_description_col) {
+        dplyr::tibble(
+          variable = .extract_text_col_table(this_table, 1),
+          description = .extract_text_col_table(
+            this_table,
+            this_description_col
+          )
+        )
+      }
+    )
+
+    if (length(dictionaries)) {
+      # Now we need to figure out the dataset name to associate with each table.
+      filenames <- attr(
+        attr(tt_data, ".tt"),
+        ".files"
+      )$data_files
+
+      # For each dataset, the matching heading is sometimes the filename, and
+      # sometimes something like "dataset table", and probably sometimes
+      # "dataset". Construct a regex to test for that.
+      heading_regex <- glue::glue(
+        "{filenames}|(^|\\s+){datanames}($|\\s+)"
+      )
+
+      # Figure out which order the dictionaries are in.
+      headings <- xml2::xml_find_all(readme, ".//h1|//h2|//h3") |>
+        rvest::html_text(trim = TRUE)
+
+      locations <- purrr::map_int(
+        heading_regex,
+        \(this_head_regex) {
+          idx <- stringr::str_which(headings, this_head_regex)
+          if (!length(idx)) {
+            idx <- 0L # nocov
+          }
+          if (length(idx) > 1) {
+            # Use the one that has the fewest characters.
+            idx <- idx[order(nchar(headings[idx]))][[1]] # nocov
+          }
+          return(idx)
+        }
+      )
+      names(locations) <- datanames
+      locations <- locations[locations != 0]
+      names(dictionaries) <- names(locations[order(locations)])
+    }
+  }
+  # Make sure the descriptions are in the expected order, and that there's
+  # an entry for every dataname.
+  dictionaries <- dictionaries[datanames]
+  names(dictionaries) <- datanames
+
+  # Provide empty dictionaries for downstream joins.
+  dictionaries[lengths(dictionaries) == 0] <- list(
+    dplyr::tibble(
+      variable = character(),
+      description = character()
+    )
+  )
+  return(dictionaries)
 }
