@@ -25,16 +25,43 @@
     <loc>https://r4ds.github.io/ttapi/index.html</loc>
   </url>
   <url>
+    <loc>https://r4ds.github.io/ttapi/reference/dot-extract_text_cell.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/reference/dot-extract_text_col.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/reference/dot-extract_urls_cell.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/reference/dot-extract_urls_col.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/reference/dot-parse_tt_year_readme.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/reference/dot-summarize_tt_dataset.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/reference/dot-tt_readme_rows.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/reference/dot-tt_readme_table.html</loc>
+  </url>
+  <url>
     <loc>https://r4ds.github.io/ttapi/reference/get_tt_datasets_metadata.html</loc>
   </url>
   <url>
-    <loc>https://r4ds.github.io/ttapi/reference/get_tt_datasets_table.html</loc>
+    <loc>https://r4ds.github.io/ttapi/reference/get_tt_tbl.html</loc>
   </url>
   <url>
     <loc>https://r4ds.github.io/ttapi/reference/get_tt_week_metadata.html</loc>
   </url>
   <url>
     <loc>https://r4ds.github.io/ttapi/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/reference/this_year.html</loc>
   </url>
   <url>
     <loc>https://r4ds.github.io/ttapi/reference/ttapi-package.html</loc>
