@@ -25,10 +25,19 @@
     <loc>https://r4ds.github.io/ttapi/index.html</loc>
   </url>
   <url>
+    <loc>https://r4ds.github.io/ttapi/reference/dot-extract_dataset_dictionaries.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/reference/dot-extract_tables.html</loc>
+  </url>
+  <url>
     <loc>https://r4ds.github.io/ttapi/reference/dot-extract_text_cell.html</loc>
   </url>
   <url>
     <loc>https://r4ds.github.io/ttapi/reference/dot-extract_text_col.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/reference/dot-extract_text_col_table.html</loc>
   </url>
   <url>
     <loc>https://r4ds.github.io/ttapi/reference/dot-extract_urls_cell.html</loc>
@@ -43,10 +52,13 @@
     <loc>https://r4ds.github.io/ttapi/reference/dot-summarize_tt_dataset.html</loc>
   </url>
   <url>
-    <loc>https://r4ds.github.io/ttapi/reference/dot-tt_readme_rows.html</loc>
+    <loc>https://r4ds.github.io/ttapi/reference/dot-table_headings.html</loc>
   </url>
   <url>
-    <loc>https://r4ds.github.io/ttapi/reference/dot-tt_readme_table.html</loc>
+    <loc>https://r4ds.github.io/ttapi/reference/dot-tt_year_readme_rows.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttapi/reference/dot-tt_year_readme_table.html</loc>
   </url>
   <url>
     <loc>https://r4ds.github.io/ttapi/reference/get_tt_datasets_metadata.html</loc>
