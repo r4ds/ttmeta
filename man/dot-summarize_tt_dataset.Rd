@@ -4,10 +4,12 @@
 \alias{.summarize_tt_dataset}
 \title{Summarize a TidyTuesday dataset}
 \usage{
-.summarize_tt_dataset(tt_dataset, year, week)
+.summarize_tt_dataset(tt_dataset, dictionary, year, week)
 }
 \arguments{
 \item{tt_dataset}{The dataset to summarize.}
+
+\item{dictionary}{The extracted data dictionary for this dataset.}
 
 \item{year}{The year of this dataset (to include in the summary info).}
 

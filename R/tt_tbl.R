@@ -41,7 +41,7 @@ get_tt_tbl <- function(min_year = 2018L,
 #' @return A table of information about TidyTuesday weeks for that year.
 #' @keywords internal
 .parse_tt_year_readme <- function(year) {
-  rows <- .tt_readme_rows(year)
+  rows <- .tt_year_readme_rows(year)
 
   return(
     dplyr::tibble(

@@ -11,6 +11,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/ttapi)](https://CRAN.R-project.org/package=ttapi)
 [![Codecov test
 coverage](https://codecov.io/gh/r4ds/ttapi/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r4ds/ttapi?branch=main)
+[![R-CMD-check](https://github.com/r4ds/ttapi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r4ds/ttapi/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 Find TidyTuesday datasets by variable name, variable class, and likely

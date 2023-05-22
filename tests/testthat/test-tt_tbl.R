@@ -1,6 +1,8 @@
 test_that("get_tt_tbl() gets a summary table", {
   skip_on_cran()
-  expect_no_error({test_result <- get_tt_tbl(2018L, 2018L)})
+  expect_no_error({
+    test_result <- get_tt_tbl(2018L, 2018L)
+  })
   class(test_result)
   expect_s3_class(
     test_result,
@@ -21,5 +23,10 @@ test_that("get_tt_tbl() gets a summary table", {
 })
 
 test_that("get_tt_tbl() errors informatively", {
-  expect_snapshot({get_tt_tbl(2020, 2019)}, error = TRUE)
+  expect_snapshot(
+    {
+      get_tt_tbl(2020, 2019)
+    },
+    error = TRUE
+  )
 })
