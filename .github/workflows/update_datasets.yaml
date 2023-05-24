@@ -33,19 +33,19 @@ jobs:
           target <- "R/sysdata.rda"
           original_sysdata_dt <- fs::file_info(target)$modification_time
           source("data-raw/just-new.R", echo = FALSE)
-          cli::cli_alert_info("git dir = {gert::git_find()}")
-          #if (fs::file_info(target)$modification_time != original_sysdata_dt) {
-          #  cli::cli_alert_success("sysdata updated, committing.")
-          #  gert::git_add(target)
-          #  if (any(gert::git_status()$staged)) {
-          #    cli::cli_alert_info("Committing.")
-          #    gert::git_commit("🤖 Auto-update internal data")
-          #    cli::cli_alert_info("Pushing.")
-          #    gert::git_push()
-          #  } else {
-          #    cli::cli_alert_info("No dataset updates.")
-          #  }
-          # } else {
-          #  cli::cli_abort("Didn't write.")
-          # }
+          cli::cli_alert_info("target path = {target}")
+          if (fs::file_info(target)$modification_time != original_sysdata_dt) {
+            cli::cli_alert_success("sysdata updated, committing.")
+            gert::git_add(target)
+            if (any(gert::git_status()$staged)) {
+              cli::cli_alert_info("Committing.")
+              gert::git_commit("🤖 Auto-update internal data")
+              cli::cli_alert_info("Pushing.")
+              gert::git_push()
+            } else {
+              cli::cli_alert_info("No dataset updates.")
+            }
+          } else {
+            cli::cli_abort("Didn't write.")
+          }
         shell: Rscript {0}
