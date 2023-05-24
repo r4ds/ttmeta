@@ -1,0 +1,53 @@
+name: update-datasets
+
+on:
+  schedule:
+    - cron: '0 14 * * 1' # 2pm UTC Mondays
+  workflow_dispatch:
+
+# Check out and build package, run data-raw/internal.R,
+jobs:
+  update-datasets:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GH_PAT }}
+      R_KEEP_PKG_SOURCE: yes
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+          token: ${{ env.GITHUB_PAT }}
+      - uses: r-lib/actions/setup-pandoc@v2
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::gert, any::fs, any::pkgload
+      - name: Update data and commit
+        run: |
+          gert::git_config_set("user.name", "github-actions")
+          gert::git_config_set("user.email", "github-actions@github.com")
+          target <- "R/sysdata.rda"
+          original_sysdata_dt <- fs::file_info(target)$modification_time
+          source("data-raw/just-new.R", echo=TRUE)
+          if (fs::file_info(target)$modification_time != original_sysdata_dt) {
+            # Make sure it isn't broken.
+            pkgload::load_all()
+            if (nrow(tt_summary_tbl) && nrow(tt_datasets_metadata)) {
+              gert::git_add("R/sysdata.rda")
+              if (any(gert::git_status()$staged)) {
+                gert::git_commit("🤖 Auto-update internal data")
+                gert::git_push()
+              } else {
+                message("No dataset updates.")
+              }
+            } else {
+              stop("Update failed.")
+            }
+          } else {
+            stop("Didn't write.")
+          }
+        shell: Rscript {0}
