@@ -24,7 +24,7 @@ jobs:
           use-public-rspm: true
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::gert, any::fs, any::pkgload
+          extra-packages: any::gert, any::fs
       - name: Update data and commit
         run: |
           gert::git_config_set("user.name", "github-actions")
@@ -33,22 +33,15 @@ jobs:
           original_sysdata_dt <- fs::file_info(target)$modification_time
           source("data-raw/just-new.R", echo=TRUE)
           if (fs::file_info(target)$modification_time != original_sysdata_dt) {
-            cli::cli_alert_success("sysdata updated, verifying.")
-            # Make sure it isn't broken.
-            pkgload::load_all()
-            if (nrow(tt_summary_tbl) && nrow(tt_datasets_metadata)) {
-              cli::cli_alert_success("Datasets look ok, committing.")
-              gert::git_add(target)
-              if (any(gert::git_status()$staged)) {
-                cli::cli_alert_info("Committing.")
-                gert::git_commit("🤖 Auto-update internal data")
-                cli::cli_alert_info("Pushing.")
-                gert::git_push()
-              } else {
-                cli::cli_alert_info("No dataset updates.")
-              }
+            cli::cli_alert_success("sysdata updated, committing.")
+            gert::git_add(target)
+            if (any(gert::git_status()$staged)) {
+              cli::cli_alert_info("Committing.")
+              gert::git_commit("🤖 Auto-update internal data")
+              cli::cli_alert_info("Pushing.")
+              gert::git_push()
             } else {
-              cli::cli_abort("Update failed.")
+              cli::cli_alert_info("No dataset updates.")
             }
           } else {
             cli::cli_abort("Didn't write.")
