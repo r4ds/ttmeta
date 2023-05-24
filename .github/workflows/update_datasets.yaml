@@ -29,11 +29,11 @@ jobs:
         run: |
           gert::git_config_set("user.name", "github-actions")
           gert::git_config_set("user.email", "github-actions@github.com")
-          gert::git_find()
           
-          #target <- "R/sysdata.rda"
-          #original_sysdata_dt <- fs::file_info(target)$modification_time
-          #source("data-raw/just-new.R", echo = TRUE)
+          target <- "R/sysdata.rda"
+          original_sysdata_dt <- fs::file_info(target)$modification_time
+          source("data-raw/just-new.R", echo = FALSE)
+          cli::cli_alert_info("git dir = {gert::git_find()}")
           #if (fs::file_info(target)$modification_time != original_sysdata_dt) {
           #  cli::cli_alert_success("sysdata updated, committing.")
           #  gert::git_add(target)
