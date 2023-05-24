@@ -34,20 +34,24 @@ jobs:
           original_sysdata_dt <- fs::file_info(target)$modification_time
           source("data-raw/just-new.R", echo=TRUE)
           if (fs::file_info(target)$modification_time != original_sysdata_dt) {
+            cli::cli_alert_success("sysdata updated, verifying.")
             # Make sure it isn't broken.
             pkgload::load_all()
             if (nrow(tt_summary_tbl) && nrow(tt_datasets_metadata)) {
+              cli::cli_alert_success("Datasets look ok, committing.")
               gert::git_add("R/sysdata.rda")
               if (any(gert::git_status()$staged)) {
+                cli::cli_alert_info("Committing.")
                 gert::git_commit("🤖 Auto-update internal data")
+                cli::cli_alert_info("Pushing.")
                 gert::git_push()
               } else {
-                message("No dataset updates.")
+                cli::cli_alert_info("No dataset updates.")
               }
             } else {
-              stop("Update failed.")
+              cli::cli_abort("Update failed.")
             }
           } else {
-            stop("Didn't write.")
+            cli::cli_abort("Didn't write.")
           }
         shell: Rscript {0}
