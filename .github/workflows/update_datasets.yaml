@@ -30,7 +30,7 @@ jobs:
           gert::git_config_set("user.name", "github-actions")
           gert::git_config_set("user.email", "github-actions@github.com")
           
-          target <- "R/sysdata.rda"
+          target <- here::here("R/sysdata.rda")
           original_sysdata_dt <- fs::file_info(target)$modification_time
           source("data-raw/just-new.R", echo = FALSE)
           cli::cli_alert_info("target path = {target}")
