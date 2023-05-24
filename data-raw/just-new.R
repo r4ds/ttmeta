@@ -23,11 +23,14 @@ if (
   tt_summary_tbl <- updated_tt_summary_tbl
   tt_datasets_metadata <- updated_tt_datasets_metadata
   .tt_gh_base <- "https://github.com/rfordatascience/tidytuesday/blob/master/"
+  
+  save_target <- here::here("R/sysdata.rda")
+  cli::cli_alert_info("Saving to {save_target}.")
   save(
     .tt_gh_base,
     tt_summary_tbl,
     tt_datasets_metadata,
-    file = here::here("R/sysdata.rda"),
+    file = save_target,
     compress = "bzip2",
     version = 2
   )
