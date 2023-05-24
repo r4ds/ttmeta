@@ -3,8 +3,12 @@
 on:
   push:
     branches: [main, master]
+    paths-ignore:
+      - .github/workflows/update-datasets.yaml
   pull_request:
     branches: [main, master]
+    paths-ignore:
+      - .github/workflows/update-datasets.yaml
 
 name: R-CMD-check
 
