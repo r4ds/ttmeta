@@ -3,7 +3,7 @@ pkgload::load_all()
 updated_tt_summary_tbl <- get_tt_tbl()
 new_datasets <- dplyr::filter(
   updated_tt_summary_tbl,
-  !(date %in% tt_summary_tbl$date)
+  !(date %fin% tt_summary_tbl$date)
 )
 
 new_tt_datasets_metadata <- get_tt_datasets_metadata(new_datasets)
