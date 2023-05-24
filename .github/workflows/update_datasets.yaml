@@ -24,12 +24,14 @@ jobs:
           use-public-rspm: true
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::gert, any::fs
+          extra-packages: any::gert, any::fs, any::here
       - name: Update data and commit
         run: |
           gert::git_config_set("user.name", "github-actions")
           gert::git_config_set("user.email", "github-actions@github.com")
-          target <- "R/sysdata.rda"
+          proj_root <- here::here()
+          cli::cli_alert_info(proj_root)
+          target <- here::here("R/sysdata.rda")
           original_sysdata_dt <- fs::file_info(target)$modification_time
           source("data-raw/just-new.R", echo=TRUE)
           if (fs::file_info(target)$modification_time != original_sysdata_dt) {

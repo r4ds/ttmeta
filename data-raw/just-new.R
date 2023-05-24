@@ -1,3 +1,7 @@
+proj_root <- here::here()
+cli::cli_alert_info(proj_root)
+usethis::proj_activate(proj_root)
+
 pkgload::load_all(reset = FALSE, helpers = FALSE, attach_testthat = FALSE)
 
 updated_tt_summary_tbl <- get_tt_tbl()
