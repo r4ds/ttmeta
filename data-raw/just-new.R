@@ -27,7 +27,7 @@ if (
     .tt_gh_base,
     tt_summary_tbl,
     tt_datasets_metadata,
-    file = "R/sysdata.rda",
+    file = here::here("R/sysdata.rda"),
     compress = "bzip2",
     version = 2
   )
