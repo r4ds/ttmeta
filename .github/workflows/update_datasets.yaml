@@ -36,7 +36,7 @@ jobs:
           source("data-raw/just-new.R", echo=TRUE)
           if (fs::file_info(target)$modification_time != original_sysdata_dt) {
             cli::cli_alert_success("sysdata updated, committing.")
-            gert::git_add(target)
+            gert::git_add(target, force = TRUE)
             # if (any(gert::git_status()$staged)) {
               cli::cli_alert_info("Committing.")
               gert::git_commit("🤖 Auto-update internal data")
