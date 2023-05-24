@@ -1,7 +1,3 @@
-proj_root <- here::here()
-cli::cli_alert_info(proj_root)
-usethis::proj_activate(proj_root)
-
 pkgload::load_all(reset = FALSE, helpers = FALSE, attach_testthat = FALSE)
 
 updated_tt_summary_tbl <- get_tt_tbl()
@@ -27,13 +23,15 @@ if (
   tt_summary_tbl <- updated_tt_summary_tbl
   tt_datasets_metadata <- updated_tt_datasets_metadata
   .tt_gh_base <- "https://github.com/rfordatascience/tidytuesday/blob/master/"
-  usethis::use_data(
+  save(
     .tt_gh_base,
     tt_summary_tbl,
     tt_datasets_metadata,
-    overwrite = TRUE,
-    internal = TRUE
+    file = "R/sysdata.rda",
+    compress = "bzip2",
+    version = 2
   )
+
   rm(
     .tt_gh_base,
     tt_summary_tbl,
