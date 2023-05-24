@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GH_PAT }}
-      R_KEEP_PKG_SOURCE: yes
 
     steps:
       - uses: actions/checkout@v3
@@ -39,7 +38,7 @@ jobs:
             pkgload::load_all()
             if (nrow(tt_summary_tbl) && nrow(tt_datasets_metadata)) {
               cli::cli_alert_success("Datasets look ok, committing.")
-              gert::git_add("R/sysdata.rda")
+              gert::git_add(target)
               if (any(gert::git_status()$staged)) {
                 cli::cli_alert_info("Committing.")
                 gert::git_commit("🤖 Auto-update internal data")
