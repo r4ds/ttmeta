@@ -29,22 +29,20 @@ jobs:
         run: |
           gert::git_config_set("user.name", "github-actions")
           gert::git_config_set("user.email", "github-actions@github.com")
-          proj_root <- here::here()
-          cli::cli_alert_info(proj_root)
-          target <- here::here("R/sysdata.rda")
+          target <- "R/sysdata.rda"
           original_sysdata_dt <- fs::file_info(target)$modification_time
-          source("data-raw/just-new.R", echo=TRUE)
+          source("data-raw/just-new.R", echo = TRUE)
           if (fs::file_info(target)$modification_time != original_sysdata_dt) {
             cli::cli_alert_success("sysdata updated, committing.")
-            gert::git_add(target, force = TRUE)
-            # if (any(gert::git_status()$staged)) {
+            gert::git_add(target)
+            if (any(gert::git_status()$staged)) {
               cli::cli_alert_info("Committing.")
               gert::git_commit("🤖 Auto-update internal data")
               cli::cli_alert_info("Pushing.")
               gert::git_push()
-            # } else {
-            #  cli::cli_alert_info("No dataset updates.")
-            # }
+            } else {
+              cli::cli_alert_info("No dataset updates.")
+            }
           } else {
             cli::cli_abort("Didn't write.")
           }
