@@ -19,7 +19,7 @@ test_that("get_tt_datasets_metadata works", {
   )
   expect_identical(
     colnames(test_result$variable_details[[3]]),
-    c("variable", "class", "description")
+    c("variable", "class", "n_unique", "min", "max", "description")
   )
   expect_snapshot({
     test_result

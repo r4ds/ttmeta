@@ -41,8 +41,9 @@ get_tt_datasets_metadata <- function(tt_tbl) {
 #'   year.
 #'
 #' @return A tbl_df with columns year, week, dataset_name, variables (number of
-#'   columns), observations (number of rows), and variable_details (names and
-#'   classes of all variables).
+#'   columns), observations (number of rows), and variable_details (names,
+#'   classes, n_unique (number of unique observations), min (or first
+#'   alphabetically) and max (or last alphabetically) of all variables).
 #' @export
 get_tt_week_metadata <- function(year, week) {
   this_week <- purrr::quietly(purrr::safely(tidytuesdayR::tt_load))(year, week)
@@ -106,7 +107,13 @@ get_tt_week_metadata <- function(year, week) {
       variable_details = list(
         dplyr::tibble(
           variable = names(tt_dataset),
-          class = purrr::map_chr(tt_dataset, ~ sloop::s3_class(.x)[[1]])
+          class = purrr::map_chr(tt_dataset, ~ sloop::s3_class(.x)[[1]]),
+          n_unique = purrr::map_int(tt_dataset, ~ length(unique(.x))),
+          # If min/max fail, the NULL result is fine.
+          min = purrr::map(tt_dataset, ~ purrr::safely(min)(.x)$result) |>
+            unname(),
+          max = purrr::map(tt_dataset, ~ purrr::safely(max)(.x)$result) |>
+            unname()
         ) |>
           dplyr::left_join(dictionary, by = "variable")
       )

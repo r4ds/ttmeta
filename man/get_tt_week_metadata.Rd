@@ -15,8 +15,9 @@ year.}
 }
 \value{
 A tbl_df with columns year, week, dataset_name, variables (number of
-columns), observations (number of rows), and variable_details (names and
-classes of all variables).
+columns), observations (number of rows), and variable_details (names,
+classes, n_unique (number of unique observations), min (or first
+alphabetically) and max (or last alphabetically) of all variables).
 }
 \description{
 Load a week's TidyTuesday dataset(s), and calculate metadata.
