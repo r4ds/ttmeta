@@ -3,6 +3,7 @@
 export(get_tt_datasets_metadata)
 export(get_tt_tbl)
 export(get_tt_week_metadata)
+export(parse_tt_urls)
 export(this_year)
 importFrom(fastmatch,"%fin%")
 importFrom(rlang,.data)

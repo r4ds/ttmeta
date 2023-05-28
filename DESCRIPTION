@@ -20,9 +20,12 @@ Imports:
     purrr,
     rlang,
     rvest,
+    shiny,
     sloop,
     stringr,
+    tidyr,
     tidytuesdayR,
+    urltools,
     xml2
 Suggests: 
     covr,
