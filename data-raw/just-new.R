@@ -6,45 +6,68 @@ new_datasets <- dplyr::filter(
   !(date %fin% tt_summary_tbl$date)
 )
 
-new_tt_datasets_metadata <- get_tt_datasets_metadata(new_datasets)
-updated_tt_datasets_metadata <- tt_datasets_metadata |>
-  # Make sure the new stuff isn't already there.
-  dplyr::anti_join(
-    new_tt_datasets_metadata,
-    by = dplyr::join_by(year, week)
-  ) |>
-  dplyr::bind_rows(new_tt_datasets_metadata) |>
-  dplyr::arrange(year, week, dataset_name)
+if (nrow(new_datasets)) {
+  new_tt_datasets_metadata <- get_tt_datasets_metadata(new_datasets)
+  updated_tt_datasets_metadata <- tt_datasets_metadata |>
+    # Make sure the new stuff isn't already there.
+    dplyr::anti_join(
+      new_tt_datasets_metadata,
+      by = dplyr::join_by(year, week)
+    ) |>
+    dplyr::bind_rows(new_tt_datasets_metadata) |>
+    dplyr::arrange(year, week, dataset_name)
 
-if (
-  !identical(updated_tt_summary_tbl, tt_summary_tbl) ||
-  !identical(updated_tt_datasets_metadata, tt_datasets_metadata)
-) {
-  tt_summary_tbl <- updated_tt_summary_tbl
-  tt_datasets_metadata <- updated_tt_datasets_metadata
-  .tt_gh_base <- "https://github.com/rfordatascience/tidytuesday/blob/master/"
-  
-  save_target <- here::here("R/sysdata.rda")
-  cli::cli_alert_info("Saving to {save_target}.")
-  save(
-    .tt_gh_base,
-    tt_summary_tbl,
-    tt_datasets_metadata,
-    file = save_target,
-    compress = "bzip2",
-    version = 2
-  )
+  new_tt_urls_tbl <- parse_tt_urls(new_datasets)
+  updated_tt_urls_tbl <- tt_urls_tbl |>
+    # Make sure the new stuff isn't already there.
+    dplyr::anti_join(
+      new_tt_urls_tbl,
+      by = dplyr::join_by(year, week)
+    ) |>
+    dplyr::bind_rows(new_tt_urls_tbl) |>
+    dplyr::arrange(
+      year, week, url, scheme, domain, subdomain, tld, path, query, fragment
+    )
+
+  if (
+    !identical(updated_tt_summary_tbl, tt_summary_tbl) ||
+      !identical(updated_tt_datasets_metadata, tt_datasets_metadata) ||
+      !identical(updated_tt_urls_tbl, tt_urls_tbl)
+  ) {
+    tt_summary_tbl <- updated_tt_summary_tbl
+    tt_datasets_metadata <- updated_tt_datasets_metadata
+    tt_urls_tbl <- updated_tt_urls_tbl
+    .tt_gh_base <- "https://github.com/rfordatascience/tidytuesday/blob/master/"
+
+    save_target <- here::here("R/sysdata.rda")
+    cli::cli_alert_info("Saving to {save_target}.")
+    save(
+      .tt_gh_base,
+      tt_summary_tbl,
+      tt_datasets_metadata,
+      tt_urls_tbl,
+      file = save_target,
+      compress = "bzip2",
+      version = 2
+    )
+
+    rm(
+      .tt_gh_base,
+      tt_summary_tbl,
+      tt_datasets_metadata,
+      tt_urls_tbl
+    )
+  }
 
   rm(
-    .tt_gh_base,
-    tt_summary_tbl,
-    tt_datasets_metadata
+    new_tt_datasets_metadata,
+    updated_tt_datasets_metadata,
+    new_tt_urls_tbl,
+    updated_tt_urls_tbl
   )
 }
 
 rm(
   new_datasets,
-  new_tt_datasets_metadata,
-  updated_tt_summary_tbl,
-  updated_tt_datasets_metadata
+  updated_tt_summary_tbl
 )

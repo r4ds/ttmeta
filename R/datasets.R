@@ -4,8 +4,7 @@
 #' datasets for information such as number of variables and number of
 #' observations.
 #'
-#' @param tt_tbl A `tt_tbl` table returned by
-#'   [get_tt_tbl()].
+#' @param tt_tbl A `tt_tbl` table returned by [get_tt_tbl()].
 #'
 #' @return A tbl_df with columns year, week, dataset_name, variables (number of
 #'   columns), observations (number of rows), and variable_details (names and
