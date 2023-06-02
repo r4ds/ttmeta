@@ -3,8 +3,9 @@ test_that("Can create a url tibble.", {
   expect_identical(
     colnames(test_result),
     c(
-      "year", "week", "url", "scheme", "domain", "subdomain", "tld", "path",
-      "query", "fragment"
+      "year", "week", "type",
+      "url", "scheme", "domain", "subdomain", "tld",
+      "path", "query", "fragment"
     )
   )
   expect_equal(nrow(test_result), 10)

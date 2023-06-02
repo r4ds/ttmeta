@@ -10,8 +10,8 @@ parse_tt_urls(tt_tbl)
 \item{tt_tbl}{A \code{tt_tbl} table returned by \code{\link[=get_tt_tbl]{get_tt_tbl()}}.}
 }
 \value{
-A tbl_df with columns \code{year}, \code{week}, \code{url}, \code{scheme}, \code{domain},
-\code{subdomain}, \code{tld}, \code{path}, \code{query}, and \code{fragment}.
+A tbl_df with columns \code{year}, \code{week}, \code{type}, \code{url}, \code{scheme},
+\code{domain}, \code{subdomain}, \code{tld}, \code{path}, \code{query}, and \code{fragment}.
 }
 \description{
 Parse the \code{source_urls} and \code{article_urls} columns of a \code{tt_tbl} (returned by
