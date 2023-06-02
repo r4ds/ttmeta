@@ -4,9 +4,10 @@
       dplyr::glimpse(test_result)
     Output
       Rows: 10
-      Columns: 10
+      Columns: 11
       $ year      <int> 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018
       $ week      <int> 1, 1, 2, 2, 3, 3, 4, 4, 5, 5
+      $ type      <chr> "source", "article", "source", "article", "source", "article~
       $ url       <chr> "https://onlinembapage.com/average-tuition-and-educational-a~
       $ scheme    <chr> "https", "https", "http", "https", "https", "https", "https"~
       $ domain    <chr> "onlinembapage", "onlinembapage", "spotrac", "wordpress", "o~

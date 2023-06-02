@@ -5,8 +5,8 @@
 #'
 #' @inheritParams get_tt_datasets_metadata
 #'
-#' @return A tbl_df with columns `year`, `week`, `url`, `scheme`, `domain`,
-#'   `subdomain`, `tld`, `path`, `query`, and `fragment`.
+#' @return A tbl_df with columns `year`, `week`, `type`, `url`, `scheme`,
+#'   `domain`, `subdomain`, `tld`, `path`, `query`, and `fragment`.
 #' @export
 parse_tt_urls <- function(tt_tbl) {
   return(
@@ -29,16 +29,15 @@ parse_tt_urls <- function(tt_tbl) {
   return(
     tt_tbl |>
       dplyr::select("year", "week", "source_urls", "article_urls") |>
-      dplyr::summarize(
-        url = list(
-          c(
-            unlist(.data$source_urls),
-            unlist(.data$article_urls)
-          )
-        ),
-        .by = c("year", "week")
+      tidyr::pivot_longer(
+        c("source_urls", "article_urls"),
+        names_to = "type",
+        values_to = "url"
       ) |>
-      tidyr::unnest_longer("url")
+      tidyr::unnest_longer("url") |>
+      dplyr::mutate(
+        type = stringr::str_remove(.data$type, "_urls$")
+      )
   )
 }
 
