@@ -1,14 +1,15 @@
-Package: ttapi
-Title: TidyTuesday Dataset API
+Package: ttmeta
+Title: TidyTuesday Dataset Metadata
 Version: 0.0.0.9000
 Authors@R: 
     person("Jon", "Harmon", , "jonthegeek@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-4781-4346"))
-Description: Find TidyTuesday datasets by variable name, variable class,
-    and likely other things.
+Description: TidyTuesday has been releasing weekly datasets since 2018.
+    This package provides metadata about those datasets, and functoins to
+    update that metadata.
 License: MIT + file LICENSE
-URL: https://github.com/r4ds/ttapi, https://r4ds.github.io/ttapi/
-BugReports: https://github.com/r4ds/ttapi/issues
+URL: https://github.com/r4ds/ttmeta, https://r4ds.github.io/ttmeta/
+BugReports: https://github.com/r4ds/ttmeta/issues
 Depends: 
     R (>= 2.10)
 Imports: 

@@ -1,4 +1,4 @@
-library(ttapi)
+library(ttmeta)
 
 .tt_gh_base <- "https://github.com/rfordatascience/tidytuesday/blob/master/"
 

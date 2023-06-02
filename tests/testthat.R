@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/reference/test_package.html#special-files
 
 library(testthat)
-library(ttapi)
+library(ttmeta)
 
-test_check("ttapi")
+test_check("ttmeta")
