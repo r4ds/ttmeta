@@ -19,8 +19,9 @@ parse_tt_urls <- function(tt_tbl) {
         path = stringr::str_remove(.data$path, "/$")
       ) |>
       dplyr::arrange(
-        .data$year, .data$week, .data$url, .data$scheme, .data$domain,
-        .data$subdomain, .data$tld, .data$path, .data$query, .data$fragment
+        .data$year, .data$week, .data$type, .data$url, .data$scheme,
+        .data$domain, .data$subdomain, .data$tld, .data$path, .data$query,
+        .data$fragment
       )
   )
 }
