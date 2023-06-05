@@ -39,14 +39,43 @@ if (nrow(new_datasets)) {
     tt_urls_tbl <- updated_tt_urls_tbl
     .tt_gh_base <- "https://github.com/rfordatascience/tidytuesday/blob/master/"
 
-    save_target <- here::here("R/sysdata.rda")
-    cli::cli_alert_info("Saving to {save_target}.")
+    internal_target <- here::here("R/sysdata.rda")
+    cli::cli_alert_info("Saving to {internal_target}.")
     save(
       .tt_gh_base,
       tt_summary_tbl,
       tt_datasets_metadata,
       tt_urls_tbl,
-      file = save_target,
+      file = internal_target,
+      compress = "bzip2",
+      version = 2
+    )
+
+    export_target <- here::here("data/tt_summary_tbl.rda")
+    cli::cli_alert_info("Saving to {export_target}.")
+    save(
+      tt_summary_tbl,
+      tt_datasets_metadata,
+      tt_urls_tbl,
+      file = export_target,
+      compress = "bzip2",
+      version = 2
+    )
+
+    export_target <- here::here("data/tt_datasets_metadata.rda")
+    cli::cli_alert_info("Saving to {export_target}.")
+    save(
+      tt_datasets_metadata,
+      file = export_target,
+      compress = "bzip2",
+      version = 2
+    )
+
+    export_target <- here::here("data/tt_urls_tbl.rda")
+    cli::cli_alert_info("Saving to {export_target}.")
+    save(
+      tt_urls_tbl,
+      file = export_target,
       compress = "bzip2",
       version = 2
     )

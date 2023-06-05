@@ -1,3 +1,5 @@
+# TODO: Document this dataset.
+
 #' Create a URL dataset
 #'
 #' Parse the `source_urls` and `article_urls` columns of a `tt_tbl` (returned by
