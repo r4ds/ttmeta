@@ -7,9 +7,9 @@
       Columns: 11
       $ year      <int> 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018
       $ week      <int> 1, 1, 2, 2, 3, 3, 4, 4, 5, 5
-      $ type      <chr> "article", "source", "article", "source", "article", "source~
+      $ type      <fct> article, source, article, source, article, source, article, ~
       $ url       <chr> "https://onlinembapage.com/wp-content/uploads/2016/03/Averag~
-      $ scheme    <chr> "https", "https", "https", "http", "https", "https", "https"~
+      $ scheme    <fct> https, https, https, http, https, https, https, https, https~
       $ domain    <chr> "onlinembapage", "onlinembapage", "wordpress", "spotrac", "o~
       $ subdomain <chr> NA, NA, "espnfivethirtyeight.files", "www", NA, NA, "data", ~
       $ tld       <chr> "com", "com", "com", "com", "org", "org", "au", "au", "gov",~

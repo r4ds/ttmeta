@@ -4,9 +4,9 @@
 \name{ttmeta-package}
 \alias{ttmeta}
 \alias{ttmeta-package}
-\title{ttmeta: TidyTuesday Dataset API}
+\title{ttmeta: TidyTuesday Dataset Metadata}
 \description{
-Find TidyTuesday datasets by variable name, variable class, and likely other things.
+TidyTuesday has been releasing weekly datasets since 2018. This package provides metadata about those datasets, and functoins to update that metadata.
 }
 \seealso{
 Useful links:

@@ -44,7 +44,7 @@
   )
 }
 
-#' Extract URLs from a column of an html table
+#' Extract urls from a column of an html table
 #'
 #' @inheritParams .extract_text_col
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/html.R
 \name{.extract_urls_col}
 \alias{.extract_urls_col}
-\title{Extract URLs from a column of an html table}
+\title{Extract urls from a column of an html table}
 \usage{
 .extract_urls_col(rows, col_number)
 }
@@ -16,6 +16,6 @@ A list of character vectors of the urls in the table, with one vector
 per row.
 }
 \description{
-Extract URLs from a column of an html table
+Extract urls from a column of an html table
 }
 \keyword{internal}

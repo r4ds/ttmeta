@@ -1,3 +1,34 @@
+#' TidyTuesday dataset metadata
+#'
+#' Metadata about the weekly TidyTuesday datasets.
+#'
+#' @format A data frame with one row per dataset (555 rows as of 2023-06-05) and
+#'   6 variables:
+#' \describe{
+#'   \item{year}{(integer) The year in which the dataset was realeased.}
+#'   \item{week}{(integer) The week number for this dataset within this year.}
+#'   \item{dataset_name}{(character) The name of this dataset. Some weeks
+#'   have multiple datasets.}
+#'   \item{variables}{(integer) The number of columns in this dataset.}
+#'   \item{observations}{(integer) The number of rows in this dataset.}
+#'   \item{variable_details}{(tbl_df) A tibble with a row for each variable, and
+#'   6 columns:
+#'     \describe{
+#'       \item{variable}{(character) The name of this variable.}
+#'       \item{class}{(character) the class of this variable.}
+#'       \item{n_unique}{(integer) the number of unique values of this variable within this dataset.}
+#'       \item{min}{(list) The "lowest" value of this variable (lowest number, first value alphabetically, etc).}
+#'       \item{max}{(list) The "highest" value of this variable (highest number, last value alphabetically, etc).}
+#'       \item{description}{(character) A short description of this variable.}
+#'     }
+#'   }
+#' }
+#'
+#' @source <https://github.com/rfordatascience/tidytuesday>
+#' @seealso [`get_tt_datasets_metadata()`] for the function that is used to
+#' compile this dataset.
+"tt_datasets_metadata"
+
 #' Load and parse metadata about TidyTuesday datasets
 #'
 #' Load data week-by-week for all weeks in a tt_week_summaries, and parse the
@@ -10,6 +41,7 @@
 #'   columns), observations (number of rows), and variable_details (names and
 #'   classes of all variables).
 #' @export
+#' @seealso [`tt_datasets_metadata`] the resulting dataset.
 get_tt_datasets_metadata <- function(tt_tbl) {
   purrr::pmap(
     dplyr::select(
