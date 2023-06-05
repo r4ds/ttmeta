@@ -47,7 +47,7 @@ if (nrow(new_datasets)) {
       tt_datasets_metadata,
       tt_urls_tbl,
       file = internal_target,
-      compress = "bzip2",
+      compress = "xz",
       version = 2
     )
 
@@ -58,7 +58,7 @@ if (nrow(new_datasets)) {
       tt_datasets_metadata,
       tt_urls_tbl,
       file = export_target,
-      compress = "bzip2",
+      compress = "xz",
       version = 2
     )
 
