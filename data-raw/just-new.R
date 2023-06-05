@@ -84,7 +84,9 @@ if (nrow(new_datasets)) {
       .tt_gh_base,
       tt_summary_tbl,
       tt_datasets_metadata,
-      tt_urls_tbl
+      tt_urls_tbl,
+      export_target,
+      internal_target
     )
   }
 
