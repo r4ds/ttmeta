@@ -79,6 +79,15 @@
     <loc>https://r4ds.github.io/ttmeta/reference/this_year.html</loc>
   </url>
   <url>
+    <loc>https://r4ds.github.io/ttmeta/reference/tt_datasets_metadata.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttmeta/reference/tt_summary_tbl.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/ttmeta/reference/tt_urls_tbl.html</loc>
+  </url>
+  <url>
     <loc>https://r4ds.github.io/ttmeta/reference/ttmeta-package.html</loc>
   </url>
 </urlset>
