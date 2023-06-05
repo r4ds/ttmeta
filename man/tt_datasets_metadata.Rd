@@ -8,21 +8,21 @@
 A data frame with one row per dataset (555 rows as of 2023-06-05) and
 6 variables:
 \describe{
-\item{year (integer)}{The year in which the dataset was realeased.}
-\item{week (integer)}{The week number for this dataset within this year.}
-\item{dataset_name (character)}{The name of this dataset. Some weeks
+\item{year}{(integer) The year in which the dataset was realeased.}
+\item{week}{(integer) The week number for this dataset within this year.}
+\item{dataset_name}{(character) The name of this dataset. Some weeks
 have multiple datasets.}
-\item{variable (integer)}{The number of columns in this dataset.}
-\item{observations (integer)}{The number of rows in this dataset.}
-\item{variable_details (tbl_df)}{A tibble with a row for each variable, and
+\item{variables}{(integer) The number of columns in this dataset.}
+\item{observations}{(integer) The number of rows in this dataset.}
+\item{variable_details}{(tbl_df) A tibble with a row for each variable, and
 6 columns:
 \describe{
-\item{variable (character)}{The name of this variable.}
-\item{class (character)}{the class of this variable.}
-\item{n_unique (integer)}{the number of unique values of this variable within this dataset.}
-\item{min (list)}{The "lowest" value of this variable (lowest number, first value alphabetically, etc).}
-\item{max (list)}{The "highest" value of this variable (highest number, last value alphabetically, etc).}
-\item{description (character)}{A short description of this variable.}
+\item{variable}{(character) The name of this variable.}
+\item{class}{(character) the class of this variable.}
+\item{n_unique}{(integer) the number of unique values of this variable within this dataset.}
+\item{min}{(list) The "lowest" value of this variable (lowest number, first value alphabetically, etc).}
+\item{max}{(list) The "highest" value of this variable (highest number, last value alphabetically, etc).}
+\item{description}{(character) A short description of this variable.}
 }
 }
 }

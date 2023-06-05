@@ -5,17 +5,17 @@
 #' @format A data frame with one row per week (269 rows as of 2023-06-05) and
 #'   8 variables:
 #' \describe{
-#'   \item{year (integer)}{The year in which the dataset was realeased.}
-#'   \item{week (integer)}{The week number for this dataset within this year.}
-#'   \item{date (date)}{The date of the Tuesday of this week.}
-#'   \item{title (character)}{The overall title of this week's TidyTuesday. This
+#'   \item{year}{(integer) The year in which the dataset was realeased.}
+#'   \item{week}{(integer) The week number for this dataset within this year.}
+#'   \item{date}{(date) The date of the Tuesday of this week.}
+#'   \item{title}{(character) The overall title of this week's TidyTuesday. This
 #'   is different from the individual dataset titles (although often similar).}
-#'   \item{source_title (character)}{The title of this week's source. If there
+#'   \item{source_title}{(character) The title of this week's source. If there
 #'   are multiple sources, there is still a single title merging them.}
-#'   \item{source_urls (list of characters)}{urls for each source.}
-#'   \item{article_title (character)}{The title of this week's article If there
+#'   \item{source_urls}{(list of characters) urls for each source.}
+#'   \item{article_title}{(character) The title of this week's article If there
 #'   are multiple articles, there is still a single title merging them.}
-#'   \item{article_urls (list of characters)}{urls for each article.}
+#'   \item{article_urls}{(list of characters) urls for each article.}
 #' }
 #'
 #' @source <https://github.com/rfordatascience/tidytuesday>
