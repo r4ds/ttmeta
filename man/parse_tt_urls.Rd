@@ -2,7 +2,7 @@
 % Please edit documentation in R/urls.R
 \name{parse_tt_urls}
 \alias{parse_tt_urls}
-\title{Create a URL dataset}
+\title{Create a url dataset}
 \usage{
 parse_tt_urls(tt_tbl)
 }

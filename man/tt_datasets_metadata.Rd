@@ -5,7 +5,7 @@
 \alias{tt_datasets_metadata}
 \title{TidyTuesday dataset metadata}
 \format{
-A data frame with one row per dataset (554 rows as of 2023-05-30) and
+A data frame with one row per dataset (555 rows as of 2023-06-05) and
 6 variables:
 \describe{
 \item{year (integer)}{The year in which the dataset was realeased.}
