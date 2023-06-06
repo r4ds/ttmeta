@@ -10,3 +10,7 @@
 this_year <- function() {
   return(as.integer(lubridate::year(lubridate::today())))
 }
+
+.is_tuesday <- function(date) {
+  lubridate::wday(date, label = TRUE, abbr = TRUE) == "Tue"
+}
