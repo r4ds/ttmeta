@@ -42,8 +42,6 @@ if (nrow(new_datasets)) {
     cli::cli_alert_info("Saving to {export_target}.")
     save(
       tt_summary_tbl,
-      tt_datasets_metadata,
-      tt_urls_tbl,
       file = export_target,
       compress = "xz",
       version = 2
