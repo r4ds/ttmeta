@@ -37,19 +37,6 @@ if (nrow(new_datasets)) {
     tt_summary_tbl <- updated_tt_summary_tbl
     tt_datasets_metadata <- updated_tt_datasets_metadata
     tt_urls_tbl <- updated_tt_urls_tbl
-    .tt_gh_base <- "https://github.com/rfordatascience/tidytuesday/blob/master/"
-
-    internal_target <- here::here("R/sysdata.rda")
-    cli::cli_alert_info("Saving to {internal_target}.")
-    save(
-      .tt_gh_base,
-      tt_summary_tbl,
-      tt_datasets_metadata,
-      tt_urls_tbl,
-      file = internal_target,
-      compress = "xz",
-      version = 2
-    )
 
     export_target <- here::here("data/tt_summary_tbl.rda")
     cli::cli_alert_info("Saving to {export_target}.")
@@ -81,12 +68,10 @@ if (nrow(new_datasets)) {
     )
 
     rm(
-      .tt_gh_base,
       tt_summary_tbl,
       tt_datasets_metadata,
       tt_urls_tbl,
-      export_target,
-      internal_target
+      export_target
     )
   }
 
