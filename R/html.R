@@ -70,7 +70,9 @@
   return(
     xml2::xml_find_all(row, ".//td")[[col_number]] |>
       xml2::xml_find_all(".//a") |>
-      xml2::xml_attr("href")
+      xml2::xml_attr("href") |>
+      stringr::str_replace_all(stringr::fixed('\\\"'), '"') |>
+      stringr::str_remove_all('"')
   )
 }
 
