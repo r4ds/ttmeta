@@ -100,14 +100,26 @@
 #' @keywords internal
 .tt_year_readme_table <- function(year, table_number) {
   all_tables <- rvest::read_html(
-    glue::glue(
-      .tt_gh_base,
-      "data/{year}/readme.md"
-    )
+    .tt_year_readme_html(year)
   ) |>
     xml2::xml_find_all(".//tbody")
 
   return(all_tables[[table_number]])
+}
+
+.tt_year_readme_html <- function(year) {
+  .tt_year_readme_md(year) |>
+    markdown::mark_html()
+}
+
+.tt_year_readme_md <- function(year) {
+  md_content <- gh::gh(
+    "/repos/rfordatascience/tidytuesday/contents/data/{year}/readme.md",
+    year = year
+  )
+  md_content$content |>
+    jsonlite::base64_dec() |>
+    rawToChar()
 }
 
 #' Extract all tables from a document
