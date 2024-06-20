@@ -5,13 +5,13 @@ Authors@R:
     person("Jon", "Harmon", , "jonthegeek@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-4781-4346"))
 Description: TidyTuesday has been releasing weekly datasets since 2018.
-    This package provides metadata about those datasets, and functoins to
+    This package provides metadata about those datasets, and functions to
     update that metadata.
 License: MIT + file LICENSE
 URL: https://github.com/r4ds/ttmeta, https://r4ds.github.io/ttmeta/
 BugReports: https://github.com/r4ds/ttmeta/issues
 Depends: 
-    R (>= 2.10)
+    R (>= 4.1)
 Imports: 
     cli,
     dplyr,
