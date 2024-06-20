@@ -22,23 +22,28 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/r4ds/ttmeta/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r4ds/ttmeta/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-Find TidyTuesday datasets by variable name, variable class, and likely other things.
-Right now I'm focused on getting and cleaning the data.
-The package will include a frozen version of the data, plus functions to fetch updated data.
-The package will be much more useful after I've added functions to help search through the data (which will, as the package name implies, eventually be used to power an API and Shiny app).
+Metadata about the [TidyTuesday](https://tidytues.day) social data project.
+Data includes a summary of each weekly TidyTuesday post, information about the articles and data sources linked in those posts, and details about the datasets themselves, including variable names and classes.
+
+The package updates weekly with the latest TidyTuesday data.
+Note that the package version does *not* automatically change (yet) during that update, so the date in the version number currently reflects the last time the data was *manually* parsed.
 
 ## Installation
 
 You can install the development version of ttmeta from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("remotes")
-remotes::install_github("r4ds/ttmeta")
+# install.packages("pak")
+pak::pak("r4ds/ttmeta")
 ```
 
 ## Usage
 
-Add usage information and examples here.
+The useful parts of this package are the three exported datasets:
+
+-   `tt_summary_tbl` contains a summary of the weekly TidyTuesday posts.
+-   `tt_urls_tbl` contains source and article urls for TidyTuesday posts.
+-   `tt_datasets_metadata` contains metadata about the weekly TidyTuesday datasets.
 
 ## Code of Conduct
 
