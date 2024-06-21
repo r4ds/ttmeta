@@ -5,7 +5,7 @@
 #' @format A data frame with one row per week (269 rows as of 2023-06-05) and
 #'   8 variables:
 #' \describe{
-#'   \item{year}{(integer) The year in which the dataset was realeased.}
+#'   \item{year}{(integer) The year in which the dataset was released.}
 #'   \item{week}{(integer) The week number for this dataset within this year.}
 #'   \item{date}{(date) The date of the Tuesday of this week.}
 #'   \item{title}{(character) The overall title of this week's TidyTuesday. This

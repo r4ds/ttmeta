@@ -6,7 +6,7 @@
 \alias{ttmeta-package}
 \title{ttmeta: TidyTuesday Dataset Metadata}
 \description{
-TidyTuesday has been releasing weekly datasets since 2018. This package provides metadata about those datasets, and functoins to update that metadata.
+TidyTuesday has been releasing weekly datasets since 2018. This package provides metadata about those datasets, and functions to update that metadata.
 }
 \seealso{
 Useful links:
