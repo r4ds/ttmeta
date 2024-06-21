@@ -5,7 +5,7 @@
 #' @format A data frame with one row per article or source url (569 rows as of
 #'   2023-06-05) and 11 variables:
 #' \describe{
-#'   \item{year}{(integer) The year in which the dataset was realeased.}
+#'   \item{year}{(integer) The year in which the dataset was released.}
 #'   \item{week}{(integer) The week number for this dataset within this year.}
 #'   \item{type}{(factor) Whether this url appeared as an "article" or as a
 #'   data "source".}

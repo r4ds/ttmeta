@@ -8,7 +8,7 @@
 A data frame with one row per dataset (555 rows as of 2023-06-05) and
 6 variables:
 \describe{
-\item{year}{(integer) The year in which the dataset was realeased.}
+\item{year}{(integer) The year in which the dataset was released.}
 \item{week}{(integer) The week number for this dataset within this year.}
 \item{dataset_name}{(character) The name of this dataset. Some weeks
 have multiple datasets.}
