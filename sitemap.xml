@@ -1,93 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/404.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/SUPPORT.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/index.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/dot-extract_dataset_dictionaries.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/dot-extract_tables.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/dot-extract_text_cell.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/dot-extract_text_col.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/dot-extract_text_col_table.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/dot-extract_urls_cell.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/dot-extract_urls_col.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/dot-parse_tt_year_readme.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/dot-summarize_tt_dataset.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/dot-table_headings.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/dot-tt_year_readme_rows.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/dot-tt_year_readme_table.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/get_tt_datasets_metadata.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/get_tt_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/get_tt_week_metadata.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/parse_tt_urls.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/this_year.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/tt_datasets_metadata.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/tt_summary_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/tt_urls_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://r4ds.github.io/ttmeta/reference/ttmeta-package.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://r4ds.github.io/ttmeta/404.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/CONTRIBUTING.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/LICENSE-text.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/LICENSE.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/SUPPORT.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/authors.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/index.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/dot-extract_dataset_dictionaries.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/dot-extract_tables.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/dot-extract_text_cell.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/dot-extract_text_col.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/dot-extract_text_col_table.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/dot-extract_urls_cell.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/dot-extract_urls_col.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/dot-parse_tt_year_readme.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/dot-summarize_tt_dataset.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/dot-table_headings.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/dot-tt_year_readme_rows.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/dot-tt_year_readme_table.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/get_tt_datasets_metadata.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/get_tt_tbl.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/get_tt_week_metadata.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/index.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/parse_tt_urls.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/this_year.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/tt_datasets_metadata.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/tt_summary_tbl.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/tt_urls_tbl.html</loc></url>
+<url><loc>https://r4ds.github.io/ttmeta/reference/ttmeta-package.html</loc></url>
 </urlset>
+
