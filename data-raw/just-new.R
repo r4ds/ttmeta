@@ -1,4 +1,4 @@
-pkgload::load_all(reset = FALSE, helpers = FALSE, attach_testthat = FALSE)
+pkgload::load_all(helpers = FALSE, attach_testthat = FALSE)
 
 updated_tt_summary_tbl <- get_tt_tbl()
 new_datasets <- dplyr::filter(
@@ -64,6 +64,12 @@ if (nrow(new_datasets)) {
       compress = "bzip2",
       version = 2
     )
+
+    desc <- desc::desc(here::here())
+    pkg_version <- unclass(desc$get_version())[[1]]
+    pkg_version[[4]] <- stringr::str_remove_all(lubridate::today(), "-")
+    desc$set_version(as.package_version(paste(pkg_version, collapse = ".")))
+    desc$write()
 
     rm(
       tt_summary_tbl,
