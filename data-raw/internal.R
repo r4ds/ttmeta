@@ -1,6 +1,6 @@
 library(ttmeta)
 
-.tt_gh_base <- "https://github.com/rfordatascience/tidytuesday/blob/master/"
+.tt_gh_base <- "https://github.com/rfordatascience/tidytuesday/blob/main/"
 
 tt_summary_tbl <- get_tt_tbl()
 tt_datasets_metadata <- get_tt_datasets_metadata(tt_summary_tbl)
