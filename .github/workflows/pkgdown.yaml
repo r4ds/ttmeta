@@ -12,8 +12,16 @@ on:
 name: pkgdown
 
 jobs:
-  check-files:
+  pkgdown:
+    needs: check-files
     runs-on: ubuntu-latest
+    # Only restrict concurrency for non-PR jobs
+    concurrency:
+      group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -27,24 +35,9 @@ jobs:
             echo "other-files-changed=false" >> $GITHUB_ENV
           fi
 
-  pkgdown:
-    needs: check-files
-    runs-on: ubuntu-latest
-    # Only restrict concurrency for non-PR jobs
-    concurrency:
-      group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-    permissions:
-      contents: write
-    steps:
       - name: Skip workflow if only workflow file has changed
         if: env.other-files-changed == 'false'
         run: echo "Only workflow file has changed. Reporting success."
-
-      - name: Checkout code
-        if: env.other-files-changed == 'true'
-        uses: actions/checkout@v4
 
       - name: Setup Pandoc
         if: env.other-files-changed == 'true'
