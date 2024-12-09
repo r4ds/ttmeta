@@ -3,12 +3,8 @@
 on:
   push:
     branches: [main]
-    paths-ignore:
-      - .github/workflows/update_datasets.yaml
   pull_request:
     branches: [main]
-    paths-ignore:
-      - .github/workflows/update_datasets.yaml
   workflow_dispatch:
 
 name: test-coverage
@@ -18,20 +14,40 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # Ensure at least one commit history is fetched
+
+      - name: Check if only workflow file has changed
+        id: file-check
+        run: |
+          if git diff --name-only HEAD^ HEAD | grep -v -e '^.github/workflows/update_datasets.yaml$'; then
+            echo "other-files-changed=true" >> $GITHUB_ENV
+          else
+            echo "other-files-changed=false" >> $GITHUB_ENV
+          fi
+
+      - name: Skip workflow if only workflow file has changed
+        if: env.other-files-changed == 'false'
+        run: echo "Only workflow file has changed. Reporting success."
+
+      - uses: actions/checkout@v4
+        if: env.other-files-changed == 'true'
 
       - uses: r-lib/actions/setup-r@v2
+        if: env.other-files-changed == 'true'
         with:
           use-public-rspm: true
 
       - uses: r-lib/actions/setup-r-dependencies@v2
+        if: env.other-files-changed == 'true'
         with:
           extra-packages: any::covr
           needs: coverage
 
       - name: Test coverage
+        if: env.other-files-changed == 'true'
         run: |
           covr::codecov(
             quiet = FALSE,
@@ -41,14 +57,14 @@ jobs:
         shell: Rscript {0}
 
       - name: Show testthat output
-        if: always()
+        if: always() && env.other-files-changed == 'true'
         run: |
           ## --------------------------------------------------------------------
           find ${{ runner.temp }}/package -name 'testthat.Rout*' -exec cat '{}' \; || true
         shell: bash
 
       - name: Upload test results
-        if: failure()
+        if: failure() && env.other-files-changed == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: coverage-test-failures
