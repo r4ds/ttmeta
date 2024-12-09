@@ -2,7 +2,7 @@ name: update-datasets
 
 on:
   schedule:
-    - cron: '0 14 * * 1' # 2pm UTC Mondays
+    - cron: '0 14 * * 1' # 2pm UTC / 8am CST Mondays
   workflow_dispatch:
 
 jobs:
