@@ -10,10 +10,15 @@ on:
 name: test-coverage
 
 jobs:
-  check-files:
+  test-coverage:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # Ensure at least one commit history is fetched
+
       - name: Check if only workflow file has changed
         id: file-check
         run: |
@@ -23,12 +28,6 @@ jobs:
             echo "other-files-changed=false" >> $GITHUB_ENV
           fi
 
-  test-coverage:
-    needs: check-files
-    runs-on: ubuntu-latest
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-    steps:
       - name: Skip workflow if only workflow file has changed
         if: env.other-files-changed == 'false'
         run: echo "Only workflow file has changed. Reporting success."
