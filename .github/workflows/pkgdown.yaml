@@ -25,6 +25,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 2 # Ensure at least one commit history is fetched
+
       - name: Check if only workflow file has changed
         id: file-check
         run: |
