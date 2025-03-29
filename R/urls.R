@@ -81,6 +81,12 @@ parse_tt_urls <- function(tt_tbl) {
         type = factor(
           stringr::str_remove(.data$type, "_urls$"),
           levels = c("article", "source")
+        ),
+        # TODO: Sort out a permanent fix.
+        url = stringr::str_replace(
+          .data$url,
+          "medium.com/@",
+          "medium.com/"
         )
       )
   )
