@@ -7,6 +7,8 @@ on:
     branches: [main]
   release:
     types: [published]
+  schedule:
+    - cron: '0 14 * * 2' # 2pm UTC / 8am CST Tuesdays
   workflow_dispatch:
 
 name: pkgdown
