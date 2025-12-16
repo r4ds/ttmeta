@@ -11,12 +11,12 @@ Source:
 [`DESCRIPTION`](https://github.com/r4ds/ttmeta/blob/main/DESCRIPTION)
 
 Harmon J (2025). *ttmeta: TidyTuesday Dataset Metadata*. R package
-version 0.1.0.20251208, <https://github.com/r4ds/ttmeta>.
+version 0.1.0.20251215, <https://github.com/r4ds/ttmeta>.
 
     @Manual{,
       title = {ttmeta: TidyTuesday Dataset Metadata},
       author = {Jon Harmon},
       year = {2025},
-      note = {R package version 0.1.0.20251208},
+      note = {R package version 0.1.0.20251215},
       url = {https://github.com/r4ds/ttmeta},
     }
