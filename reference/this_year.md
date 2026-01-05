@@ -16,5 +16,5 @@ The current year as an integer.
 
 ``` r
 this_year()
-#> [1] 2025
+#> [1] 2026
 ```
