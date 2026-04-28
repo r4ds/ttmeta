@@ -20,10 +20,7 @@ information about the articles and data sources linked in those posts,
 and details about the datasets themselves, including variable names and
 classes.
 
-The package updates weekly with the latest TidyTuesday data. Note that
-the package version does *not* automatically change (yet) during that
-update, so the date in the version number currently reflects the last
-time the data was *manually* parsed.
+The package updates weekly with the latest TidyTuesday data.
 
 ## Installation
 
