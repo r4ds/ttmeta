@@ -7,8 +7,6 @@ on:
     branches: [main]
   release:
     types: [published]
-  schedule:
-    - cron: '0 14 * * 2' # 2pm UTC / 8am CST Tuesdays
   workflow_dispatch:
 
 name: pkgdown
@@ -16,6 +14,8 @@ name: pkgdown
 jobs:
   pkgdown:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/api2r/pkgskills-ci:release
     # Only restrict concurrency for non-PR jobs
     concurrency:
       group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
@@ -23,49 +23,50 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       contents: write
+      pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+
+      - uses: api2r/actions/install@v1
         with:
-          fetch-depth: 2 # Ensure at least one commit history is fetched
-
-      - name: Check if only workflow file has changed
-        id: file-check
-        run: |
-          if git diff --name-only HEAD^ HEAD | grep -v -e '^.github/workflows/update_datasets.yaml$'; then
-            echo "other-files-changed=true" >> $GITHUB_ENV
-          else
-            echo "other-files-changed=false" >> $GITHUB_ENV
-          fi
-
-      - name: Skip workflow if only workflow file has changed
-        if: env.other-files-changed == 'false'
-        run: echo "Only workflow file has changed. Reporting success."
-
-      - name: Setup Pandoc
-        if: env.other-files-changed == 'true'
-        uses: r-lib/actions/setup-pandoc@v2
-
-      - name: Setup R
-        if: env.other-files-changed == 'true'
-        uses: r-lib/actions/setup-r@v2
-        with:
-          use-public-rspm: true
-
-      - name: Setup R dependencies
-        if: env.other-files-changed == 'true'
-        uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: any::pkgdown, local::.
+          use-container: "true"
+          token: ${{ secrets.GITHUB_TOKEN }}
           needs: website
+          extra-packages: any::pkgdown gilead-biostats/qcthat local::.
 
       - name: Build site
-        if: env.other-files-changed == 'true'
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
         shell: Rscript {0}
 
+      - name: Deploy PR preview 🧪
+        if: github.event_name == 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4.8.0
+        with:
+          clean: false
+          branch: gh-pages
+          folder: docs
+          target-folder: pr/${{ github.event.number }}
+
+      - name: Comment with PR site URL 🌐
+        if: github.event_name == 'pull_request'
+        run: |
+          intPRNumber <- ${{ github.event.pull_request.number }}
+          strOwner <- tolower(qcthat::GetGHOwner())
+          strRepo <- qcthat::GetGHRepo()
+          strURL <- glue::glue(
+            "https://{strOwner}.github.io/{strRepo}/pr/{intPRNumber}/dev"
+          )
+          print(paste("🌐 URL:", strURL))
+          qcthat::CommentIssue(
+            intPRNumber,
+            glue::glue("🌐 [PR pkgdown deployed]({strURL})"),
+            NULL
+          )
+        shell: Rscript {0}
+
       - name: Deploy to GitHub pages 🚀
-        if: env.other-files-changed == 'true' && github.event_name != 'pull_request'
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4.8.0
         with:
           clean: false
           branch: gh-pages

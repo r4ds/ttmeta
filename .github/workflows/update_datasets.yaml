@@ -12,18 +12,15 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           ref: main
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: r-lib/actions/setup-r@v2
+      - uses: api2r/actions/install@v1
         with:
-          r-version: release
-          use-public-rspm: true
-
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
+          use-container: "true"
+          token: ${{ secrets.GITHUB_TOKEN }}
           extra-packages: any::gert, any::fs, any::here
 
       - name: Update data

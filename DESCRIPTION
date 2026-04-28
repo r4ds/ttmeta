@@ -1,7 +1,7 @@
 Package: ttmeta
 Title: TidyTuesday Dataset Metadata
 Version: 0.1.0.20260427
-Authors@R: 
+Authors@R:
     person("Jon", "Harmon", , "jonthegeek@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-4781-4346"))
 Description: TidyTuesday has been releasing weekly datasets since 2018.
@@ -10,9 +10,9 @@ Description: TidyTuesday has been releasing weekly datasets since 2018.
 License: MIT + file LICENSE
 URL: https://github.com/r4ds/ttmeta, https://r4ds.github.io/ttmeta/
 BugReports: https://github.com/r4ds/ttmeta/issues
-Depends: 
+Depends:
     R (>= 4.1)
-Imports: 
+Imports:
     cli,
     dplyr,
     fastmatch,
@@ -26,12 +26,13 @@ Imports:
     rvest,
     shiny,
     sloop,
+    stbl (>= 0.3.0),
     stringr,
     tidyr,
     tidytuesdayR,
     urltools,
     xml2
-Suggests: 
+Suggests:
     covr,
     here,
     pkgload,
@@ -41,4 +42,4 @@ Encoding: UTF-8
 Language: en
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
