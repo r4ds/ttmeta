@@ -9,3 +9,6 @@
 ^docs$
 ^pkgdown$
 ^data-raw$
+^\.positai$
+^\.claude$
+^AGENTS\.md$
