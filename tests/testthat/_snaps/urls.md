@@ -1,19 +1,20 @@
 # Can create a url tibble.
 
     Code
-      dplyr::glimpse(test_result)
+      test_result
     Output
-      Rows: 10
-      Columns: 11
-      $ year      <int> 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018
-      $ week      <int> 1, 1, 2, 2, 3, 3, 4, 4, 5, 5
-      $ type      <fct> article, source, article, source, article, source, article, ~
-      $ url       <chr> "https://onlinembapage.com/wp-content/uploads/2016/03/Averag~
-      $ scheme    <fct> https, https, https, http, https, https, https, https, https~
-      $ domain    <chr> "onlinembapage", "onlinembapage", "wordpress", "spotrac", "o~
-      $ subdomain <chr> NA, NA, "espnfivethirtyeight.files", "www", NA, NA, "data", ~
-      $ tld       <chr> "com", "com", "com", "com", "org", "org", "au", "au", "gov",~
-      $ path      <chr> "wp-content/uploads/2016/03/AverageTuition_Part1b.jpg", "ave~
-      $ query     <list> <NULL>, <NULL>, ["575", "488", "90", "info"], <NULL>, <NULL>~
-      $ fragment  <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+      # A tibble: 10 x 11
+          year  week type    url      scheme domain subdomain tld   path  query       
+         <int> <int> <fct>   <chr>    <fct>  <chr>  <chr>     <chr> <chr> <list>      
+       1  2018     1 article https:/~ https  onlin~ <NA>      com   wp-c~ <NULL>      
+       2  2018     1 source  https:/~ https  onlin~ <NA>      com   aver~ <NULL>      
+       3  2018     2 article https:/~ https  wordp~ espnfive~ com   2017~ <named list>
+       4  2018     2 source  http://~ http   spotr~ www       com   rank~ <NULL>      
+       5  2018     3 article https:/~ https  ourwo~ <NA>      org   what~ <NULL>      
+       6  2018     3 source  https:/~ https  ourwo~ <NA>      org   <NA>  <NULL>      
+       7  2018     4 article https:/~ https  gov    data      au    data~ <named list>
+       8  2018     4 source  https:/~ https  gov    data      au    data~ <named list>
+       9  2018     5 source  https:/~ https  census factfind~ gov   face~ <NULL>      
+      10  2018     5 source  https:/~ https  kaggle www       com   muon~ <NULL>      
+      # i 1 more variable: fragment <chr>
 

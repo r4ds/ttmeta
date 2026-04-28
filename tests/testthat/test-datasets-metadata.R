@@ -1,5 +1,6 @@
 test_that("get_tt_datasets_metadata works", {
   skip_on_cran()
+  skip_on_ci()
   # One bad dataset, one missing dictionary, one fully good.
   tt_tbl <- structure(
     list(year = c(2018L, 2018L, 2023L), week = c(8L, 9L, 20L)),

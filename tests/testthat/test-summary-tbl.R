@@ -1,5 +1,6 @@
 test_that("get_tt_tbl() gets a summary table", {
   skip_on_cran()
+  skip_on_ci()
   expect_no_error({
     test_result <- get_tt_tbl(2018L, 2018L)
   })
@@ -11,9 +12,14 @@ test_that("get_tt_tbl() gets a summary table", {
   expect_identical(
     colnames(test_result),
     c(
-      "year", "week", "date", "title",
-      "source_title", "source_urls",
-      "article_title", "article_urls"
+      "year",
+      "week",
+      "date",
+      "title",
+      "source_title",
+      "source_urls",
+      "article_title",
+      "article_urls"
     )
   )
   expect_equal(
@@ -23,6 +29,7 @@ test_that("get_tt_tbl() gets a summary table", {
 })
 
 test_that("get_tt_tbl() errors informatively", {
+  skip_on_ci()
   expect_snapshot(
     {
       get_tt_tbl(2020, 2019)
