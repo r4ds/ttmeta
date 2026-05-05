@@ -26,6 +26,7 @@ jobs:
           extra-packages: any::gert, any::fs, any::here
 
       - name: Update data
+        working-directory: ${{ github.workspace }}
         run: Rscript data-raw/just-new.R
 
       - name: 🚀 Commit
