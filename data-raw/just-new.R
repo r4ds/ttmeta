@@ -52,7 +52,7 @@ if (nrow(new_datasets)) {
     save(
       tt_datasets_metadata,
       file = export_target,
-      compress = "bzip2",
+      compress = "xz",
       version = 2
     )
 
@@ -61,7 +61,7 @@ if (nrow(new_datasets)) {
     save(
       tt_urls_tbl,
       file = export_target,
-      compress = "bzip2",
+      compress = "xz",
       version = 2
     )
 

@@ -6,7 +6,7 @@ usethis::use_data(
   .tt_gh_base,
   overwrite = TRUE,
   internal = TRUE,
-  compress = "xz"
+  compress = "gzip"
 )
 
 rm(.tt_gh_base)
@@ -26,8 +26,10 @@ usethis::use_data(
 )
 
 # The "compress" argument was determined by running these commands:
-# tools::resaveRdaFiles("data/") (and also "R/")
-# tools::checkRdaFiles("data/") (and also "R/")
+# tools::resaveRdaFiles("data/")
+# tools::resaveRdaFiles("R/")
+# tools::checkRdaFiles("data/")
+# tools::checkRdaFiles("R/")
 
 rm(
   tt_summary_tbl,
