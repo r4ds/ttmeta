@@ -7,7 +7,7 @@ observations.
 ## Usage
 
 ``` r
-get_tt_datasets_metadata(tt_tbl)
+get_tt_datasets_metadata(tt_tbl, token = gh::gh_token())
 ```
 
 ## Arguments
@@ -16,6 +16,10 @@ get_tt_datasets_metadata(tt_tbl)
 
   A `tt_tbl` table returned by
   [`get_tt_tbl()`](https://r4ds.github.io/ttmeta/reference/get_tt_tbl.md).
+
+- token:
+
+  GitHub token.
 
 ## Value
 

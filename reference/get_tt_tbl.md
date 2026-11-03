@@ -6,7 +6,7 @@ function gets the table of information about each of those weeks.
 ## Usage
 
 ``` r
-get_tt_tbl(min_year = 2018L, max_year = this_year())
+get_tt_tbl(min_year = 2018L, max_year = this_year(), token = gh::gh_token())
 ```
 
 ## Arguments
@@ -18,6 +18,10 @@ get_tt_tbl(min_year = 2018L, max_year = this_year())
 - max_year:
 
   The maximum year to include, between 2018 and now.
+
+- token:
+
+  GitHub token.
 
 ## Value
 

@@ -5,7 +5,7 @@ Load a week's TidyTuesday dataset(s), and calculate metadata.
 ## Usage
 
 ``` r
-get_tt_week_metadata(year, week)
+get_tt_week_metadata(year, week, token = gh::gh_token())
 ```
 
 ## Arguments
@@ -19,6 +19,10 @@ get_tt_week_metadata(year, week)
   The integer week of that dataset within that year. Note that this is
   the TidyTuesday week number, not necessarily the week number of that
   year.
+
+- token:
+
+  GitHub token.
 
 ## Value
 

@@ -5,7 +5,7 @@ Get a table from a particular TidyTuesday year readme
 ## Usage
 
 ``` r
-.tt_year_readme_table(year, table_number)
+.tt_year_readme_table(year, table_number, token = gh::gh_token())
 ```
 
 ## Arguments
@@ -19,6 +19,10 @@ Get a table from a particular TidyTuesday year readme
   Which table on the page to load. I do not currently validate this, so
   errors might be confusing if you send in a number higher than the
   number of tables in that README.
+
+- token:
+
+  GitHub token.
 
 ## Value
 

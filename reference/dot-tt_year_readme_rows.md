@@ -5,7 +5,7 @@ Get dataset rows for a particular TidyTuesday year readme
 ## Usage
 
 ``` r
-.tt_year_readme_rows(year)
+.tt_year_readme_rows(year, token = gh::gh_token())
 ```
 
 ## Arguments
@@ -13,6 +13,10 @@ Get dataset rows for a particular TidyTuesday year readme
 - year:
 
   The year of the desired README.
+
+- token:
+
+  GitHub token.
 
 ## Value
 
