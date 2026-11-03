@@ -4,10 +4,12 @@
 \alias{.parse_tt_year_readme}
 \title{Extract the weekly summary table from a TidyTuesday readme}
 \usage{
-.parse_tt_year_readme(year)
+.parse_tt_year_readme(year, token = gh::gh_token())
 }
 \arguments{
 \item{year}{The year to extract.}
+
+\item{token}{GitHub token.}
 }
 \value{
 A table of information about TidyTuesday weeks for that year.

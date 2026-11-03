@@ -36,19 +36,21 @@
 #' observations.
 #'
 #' @param tt_tbl A `tt_tbl` table returned by [get_tt_tbl()].
+#' @param token GitHub token.
 #'
 #' @return A tbl_df with columns year, week, dataset_name, variables (number of
 #'   columns), observations (number of rows), and variable_details (names and
 #'   classes of all variables).
 #' @export
 #' @seealso [`tt_datasets_metadata`] the resulting dataset.
-get_tt_datasets_metadata <- function(tt_tbl) {
+get_tt_datasets_metadata <- function(tt_tbl, token = gh::gh_token()) {
   purrr::pmap(
     dplyr::select(
       tt_tbl,
-      "year", "week"
+      "year",
+      "week"
     ),
-    get_tt_week_metadata
+    \(year, week) get_tt_week_metadata(year, week, token = token)
   ) |>
     purrr::list_rbind() |>
     # Make sure the columns are always in the expected order.
@@ -70,14 +72,19 @@ get_tt_datasets_metadata <- function(tt_tbl) {
 #' @param week The integer week of that dataset within that year. Note that this
 #'   is the TidyTuesday week number, not necessarily the week number of that
 #'   year.
+#' @param token GitHub token.
 #'
 #' @return A tbl_df with columns year, week, dataset_name, variables (number of
 #'   columns), observations (number of rows), and variable_details (names,
 #'   classes, n_unique (number of unique observations), min (or first
 #'   alphabetically) and max (or last alphabetically) of all variables).
 #' @export
-get_tt_week_metadata <- function(year, week) {
-  this_week <- purrr::quietly(purrr::safely(tidytuesdayR::tt_load))(year, week)
+get_tt_week_metadata <- function(year, week, token = gh::gh_token()) {
+  this_week <- purrr::quietly(purrr::safely(tidytuesdayR::tt_load))(
+    year,
+    week,
+    auth = token
+  )
   this_week <- this_week$result$result
   if (length(this_week)) {
     dictionaries <- .extract_dataset_dictionaries(this_week)
@@ -125,10 +132,7 @@ get_tt_week_metadata <- function(year, week) {
 #'
 #' @return A `tbl_df` summarizing the data.
 #' @keywords internal
-.summarize_tt_dataset <- function(tt_dataset,
-                                  dictionary,
-                                  year,
-                                  week) {
+.summarize_tt_dataset <- function(tt_dataset, dictionary, year, week) {
   return(
     dplyr::tibble(
       year = year,

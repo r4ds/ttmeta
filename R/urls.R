@@ -60,8 +60,16 @@ parse_tt_urls <- function(tt_tbl) {
         scheme = factor(.data$scheme, levels = c("http", "https"))
       ) |>
       dplyr::arrange(
-        .data$year, .data$week, .data$type, .data$url, .data$scheme,
-        .data$domain, .data$subdomain, .data$tld, .data$path, .data$query,
+        .data$year,
+        .data$week,
+        .data$type,
+        .data$url,
+        .data$scheme,
+        .data$domain,
+        .data$subdomain,
+        .data$tld,
+        .data$path,
+        .data$query,
         .data$fragment
       )
   )

@@ -4,7 +4,7 @@
 \alias{get_tt_week_metadata}
 \title{Load and parse metadata about a TidyTuesday week}
 \usage{
-get_tt_week_metadata(year, week)
+get_tt_week_metadata(year, week, token = gh::gh_token())
 }
 \arguments{
 \item{year}{The year of the dataset.}
@@ -12,6 +12,8 @@ get_tt_week_metadata(year, week)
 \item{week}{The integer week of that dataset within that year. Note that this
 is the TidyTuesday week number, not necessarily the week number of that
 year.}
+
+\item{token}{GitHub token.}
 }
 \value{
 A tbl_df with columns year, week, dataset_name, variables (number of

@@ -4,10 +4,12 @@
 \alias{get_tt_datasets_metadata}
 \title{Load and parse metadata about TidyTuesday datasets}
 \usage{
-get_tt_datasets_metadata(tt_tbl)
+get_tt_datasets_metadata(tt_tbl, token = gh::gh_token())
 }
 \arguments{
 \item{tt_tbl}{A \code{tt_tbl} table returned by \code{\link[=get_tt_tbl]{get_tt_tbl()}}.}
+
+\item{token}{GitHub token.}
 }
 \value{
 A tbl_df with columns year, week, dataset_name, variables (number of

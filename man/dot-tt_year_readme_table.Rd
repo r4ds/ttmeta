@@ -4,7 +4,7 @@
 \alias{.tt_year_readme_table}
 \title{Get a table from a particular TidyTuesday year readme}
 \usage{
-.tt_year_readme_table(year, table_number)
+.tt_year_readme_table(year, table_number, token = gh::gh_token())
 }
 \arguments{
 \item{year}{The year of the desired README.}
@@ -12,6 +12,8 @@
 \item{table_number}{Which table on the page to load. I do not currently
 validate this, so errors might be confusing if you send in a number higher
 than the number of tables in that README.}
+
+\item{token}{GitHub token.}
 }
 \value{
 An xml node_set containing the body of the table.
