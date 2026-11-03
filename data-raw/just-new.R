@@ -1,13 +1,20 @@
 pkgload::load_all(helpers = FALSE, attach_testthat = FALSE)
 
-updated_tt_summary_tbl <- get_tt_tbl()
+token <- Sys.getenv("GH_PAT")
+if (!nzchar(token)) {
+  token <- gh::gh_token()
+}
+updated_tt_summary_tbl <- get_tt_tbl(token = token)
 new_datasets <- dplyr::filter(
   updated_tt_summary_tbl,
   !(date %fin% tt_summary_tbl$date)
 )
 
 if (nrow(new_datasets)) {
-  new_tt_datasets_metadata <- get_tt_datasets_metadata(new_datasets)
+  new_tt_datasets_metadata <- get_tt_datasets_metadata(
+    new_datasets,
+    token = token
+  )
   updated_tt_datasets_metadata <- tt_datasets_metadata |>
     # Make sure the new stuff isn't already there.
     dplyr::anti_join(
@@ -26,7 +33,16 @@ if (nrow(new_datasets)) {
     ) |>
     dplyr::bind_rows(new_tt_urls_tbl) |>
     dplyr::arrange(
-      year, week, url, scheme, domain, subdomain, tld, path, query, fragment
+      year,
+      week,
+      url,
+      scheme,
+      domain,
+      subdomain,
+      tld,
+      path,
+      query,
+      fragment
     )
 
   if (

@@ -4,10 +4,12 @@
 \alias{.tt_year_readme_rows}
 \title{Get dataset rows for a particular TidyTuesday year readme}
 \usage{
-.tt_year_readme_rows(year)
+.tt_year_readme_rows(year, token = gh::gh_token())
 }
 \arguments{
 \item{year}{The year of the desired README.}
+
+\item{token}{GitHub token.}
 }
 \value{
 An xml node_set of rows.

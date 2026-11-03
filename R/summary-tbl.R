@@ -34,8 +34,11 @@
 #' @return A `tt_tbl` tibble of information about TidyTuesday weeks in the
 #'   requested timeframe.
 #' @export
-get_tt_tbl <- function(min_year = 2018L,
-                       max_year = this_year()) {
+get_tt_tbl <- function(
+  min_year = 2018L,
+  max_year = this_year(),
+  token = gh::gh_token()
+) {
   min_year <- max(as.integer(min_year), 2018L)
   max_year <- min(as.integer(max_year), this_year())
 
@@ -47,7 +50,7 @@ get_tt_tbl <- function(min_year = 2018L,
 
   tt_week_summaries <- purrr::map(
     min_year:max_year,
-    .parse_tt_year_readme
+    \(year) .parse_tt_year_readme(year, token = token)
   ) |>
     purrr::list_rbind()
 
@@ -62,11 +65,12 @@ get_tt_tbl <- function(min_year = 2018L,
 #' Extract the weekly summary table from a TidyTuesday readme
 #'
 #' @param year The year to extract.
+#' @param token GitHub token.
 #'
 #' @return A table of information about TidyTuesday weeks for that year.
 #' @keywords internal
-.parse_tt_year_readme <- function(year) {
-  rows <- .tt_year_readme_rows(year)
+.parse_tt_year_readme <- function(year, token = gh::gh_token()) {
+  rows <- .tt_year_readme_rows(year, token = token)
 
   parsed <- dplyr::tibble(
     year = year,

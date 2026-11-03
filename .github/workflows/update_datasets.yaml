@@ -26,6 +26,8 @@ jobs:
           extra-packages: any::gert, any::fs, any::here
 
       - name: Update data
+        env:
+          GITHUB_PAT: ${{ inputs.token }}
         run: Rscript data-raw/just-new.R
 
       - name: 🚀 Commit

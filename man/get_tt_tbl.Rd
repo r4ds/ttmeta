@@ -4,7 +4,7 @@
 \alias{get_tt_tbl}
 \title{Load the TidyTuesday week summaries}
 \usage{
-get_tt_tbl(min_year = 2018L, max_year = this_year())
+get_tt_tbl(min_year = 2018L, max_year = this_year(), token = gh::gh_token())
 }
 \arguments{
 \item{min_year}{The minimum year to include, between 2018 and now.}

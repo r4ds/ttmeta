@@ -79,12 +79,13 @@
 #' Get dataset rows for a particular TidyTuesday year readme
 #'
 #' @param year The year of the desired README.
+#' @param token GitHub token.
 #'
 #' @return An xml node_set of rows.
 #' @keywords internal
-.tt_year_readme_rows <- function(year) {
+.tt_year_readme_rows <- function(year, token = gh::gh_token()) {
   return(
-    .tt_year_readme_table(year, 1) |>
+    .tt_year_readme_table(year, 1, token = token) |>
       xml2::xml_find_all(".//tr")
   )
 }
@@ -98,24 +99,24 @@
 #'
 #' @return An xml node_set containing the body of the table.
 #' @keywords internal
-.tt_year_readme_table <- function(year, table_number) {
+.tt_year_readme_table <- function(year, table_number, token = gh::gh_token()) {
   all_tables <- rvest::read_html(
-    .tt_year_readme_html(year)
+    .tt_year_readme_html(year, token = token)
   ) |>
     xml2::xml_find_all(".//tbody")
 
   return(all_tables[[table_number]])
 }
 
-.tt_year_readme_html <- function(year) {
-  .tt_year_readme_md(year) |>
+.tt_year_readme_html <- function(year, token = gh::gh_token()) {
+  .tt_year_readme_md(year, token = token) |>
     markdown::mark_html()
 }
-
-.tt_year_readme_md <- function(year) {
+.tt_year_readme_md <- function(year, token = gh::gh_token()) {
   md_content <- gh::gh(
     "/repos/rfordatascience/tidytuesday/contents/data/{year}/readme.md",
-    year = year
+    year = year,
+    .token = token
   )
   md_content$content |>
     jsonlite::base64_dec() |>

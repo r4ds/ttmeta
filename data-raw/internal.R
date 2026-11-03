@@ -13,8 +13,12 @@ rm(.tt_gh_base)
 
 pkgload::load_all(helpers = FALSE, attach_testthat = FALSE)
 
-tt_summary_tbl <- get_tt_tbl()
-tt_datasets_metadata <- get_tt_datasets_metadata(tt_summary_tbl)
+token <- Sys.getenv("GH_PAT")
+if (!nzchar(token)) {
+  token <- gh::gh_token()
+}
+tt_summary_tbl <- get_tt_tbl(token = token)
+tt_datasets_metadata <- get_tt_datasets_metadata(tt_summary_tbl, token = token)
 tt_urls_tbl <- parse_tt_urls(tt_summary_tbl)
 
 usethis::use_data(
