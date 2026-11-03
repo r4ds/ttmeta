@@ -19,6 +19,10 @@ get_tt_tbl(min_year = 2018L, max_year = this_year(), token = gh::gh_token())
 
   The maximum year to include, between 2018 and now.
 
+- token:
+
+  GitHub token.
+
 ## Value
 
 A `tt_tbl` tibble of information about TidyTuesday weeks in the
