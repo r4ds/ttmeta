@@ -27,7 +27,7 @@ jobs:
 
       - name: Update data
         env:
-          GITHUB_PAT: ${{ inputs.token }}
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
         run: Rscript data-raw/just-new.R
 
       - name: 🚀 Commit

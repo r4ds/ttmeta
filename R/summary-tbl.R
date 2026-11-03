@@ -30,6 +30,7 @@
 #'
 #' @param min_year The minimum year to include, between 2018 and now.
 #' @param max_year The maximum year to include, between 2018 and now.
+#' @param token GitHub token.
 #'
 #' @return A `tt_tbl` tibble of information about TidyTuesday weeks in the
 #'   requested timeframe.

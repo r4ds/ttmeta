@@ -10,6 +10,8 @@ get_tt_tbl(min_year = 2018L, max_year = this_year(), token = gh::gh_token())
 \item{min_year}{The minimum year to include, between 2018 and now.}
 
 \item{max_year}{The maximum year to include, between 2018 and now.}
+
+\item{token}{GitHub token.}
 }
 \value{
 A \code{tt_tbl} tibble of information about TidyTuesday weeks in the

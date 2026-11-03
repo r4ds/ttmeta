@@ -1,6 +1,8 @@
 test_that("get_tt_tbl() gets a summary table", {
   skip_on_cran()
   skip_on_ci()
+  token <- gh::gh_token()
+  skip_if(is.null(token) || !nzchar(token), "No GitHub token found.")
   expect_no_error({
     test_result <- get_tt_tbl(2018L, 2018L)
   })
